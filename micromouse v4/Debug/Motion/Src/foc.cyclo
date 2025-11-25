@@ -1,0 +1,6 @@
+../Motion/Src/foc.c:20:7:PI_Update	5
+../Motion/Src/foc.c:32:20:Clarke	1
+../Motion/Src/foc.c:38:20:Park	1
+../Motion/Src/foc.c:46:20:InvPark	1
+../Motion/Src/foc.c:54:6:SVPWM_Generate	1
+../Motion/Src/foc.c:68:6:FOC_Loop	1

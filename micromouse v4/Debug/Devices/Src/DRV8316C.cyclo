@@ -1,0 +1,9 @@
+../Devices/Src/DRV8316C.c:27:16:DRV8316C_CalculateEvenParity	3
+../Devices/Src/DRV8316C.c:48:26:DRV8316C_SPI_TxRx	1
+../Devices/Src/DRV8316C.c:69:6:DRV8316C_Init	1
+../Devices/Src/DRV8316C.c:83:19:DRV8316C_WriteRegister	1
+../Devices/Src/DRV8316C.c:106:19:DRV8316C_ReadRegister	2
+../Devices/Src/DRV8316C.c:139:19:DRV8316C_UnlockRegister	1
+../Devices/Src/DRV8316C.c:150:19:DRV8316C_LockRegister	1
+../Devices/Src/DRV8316C.c:161:19:DRV8316C_ApplyDefaultConfig	6
+../Devices/Src/DRV8316C.c:204:19:DRV8316C_ClearFaults	1

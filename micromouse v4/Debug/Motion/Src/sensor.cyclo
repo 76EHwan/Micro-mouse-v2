@@ -1,0 +1,3 @@
+../Motion/Src/sensor.c:26:14:Sensor_Init	5
+../Motion/Src/sensor.c:81:6:Sensor_Start	1
+../Motion/Src/sensor.c:91:6:Sensor_TIM_IRQ	1
