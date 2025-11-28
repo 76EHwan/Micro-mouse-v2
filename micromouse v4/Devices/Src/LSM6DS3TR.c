@@ -266,7 +266,7 @@ void LSM6DS3TR_C_Init() {
 //
 //	// 3. CTRL3_C 확인
 //	LSM6DS3TR_C_CheckCTRL3C();
-	LSM6DS3TR_C_CheckCTRL();
+//	LSM6DS3TR_C_CheckCTRL();
 
 //data준비 확인
 	if (LSM6DS3TR_data_ready()) {

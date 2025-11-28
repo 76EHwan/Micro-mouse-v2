@@ -1,6 +1,6 @@
 Devices/Src/DRV8316C.o: ../Devices/Src/DRV8316C.c \
- D:/ZETIN/micromouse\ v4/Devices/Inc/DRV8316C.h ../Core/Inc/main.h \
- ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h \
+ C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Devices/Inc/DRV8316C.h \
+ ../Core/Inc/main.h ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h \
  ../Core/Inc/stm32h5xx_hal_conf.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_rcc.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_def.h \
@@ -35,7 +35,7 @@ Devices/Src/DRV8316C.o: ../Devices/Src/DRV8316C.c \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim_ex.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h \
  ../Core/Inc/spi.h ../Core/Inc/main.h
-D:/ZETIN/micromouse\ v4/Devices/Inc/DRV8316C.h:
+C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Devices/Inc/DRV8316C.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h:
 ../Core/Inc/stm32h5xx_hal_conf.h:

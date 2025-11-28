@@ -1,5 +1,5 @@
 Core/Src/tim.o: ../Core/Src/tim.c \
- D:/ZETIN/micromouse\ v4/Motion/Inc/sensor.h \
+ C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h \
  ../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h \
@@ -48,7 +48,7 @@ Core/Src/tim.o: ../Core/Src/tim.c \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim_ex.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h
-D:/ZETIN/micromouse\ v4/Motion/Inc/sensor.h:
+C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h:
 ../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h:
 ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h:
 ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h:

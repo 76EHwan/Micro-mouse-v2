@@ -91,10 +91,10 @@ HAL_StatusTypeDef DRV8316C_WriteRegister(DRV8316C_Handle_t* hdrv, uint8_t regAdd
                (data & DRV_SPI_DATA_MASK);
 
     // 2. Calculate and set the even parity bit
-//    if (DRV8316C_CalculateEvenParity(tx_frame))
-//    {
-//        tx_frame |= DRV_SPI_PARITY_BIT;
-//    }
+    if (DRV8316C_CalculateEvenParity(tx_frame))
+    {
+        tx_frame |= DRV_SPI_PARITY_BIT;
+    }
 
     // 3. Transmit the frame
     return DRV8316C_SPI_TxRx(hdrv, &tx_frame, &rx_frame);
@@ -114,10 +114,10 @@ HAL_StatusTypeDef DRV8316C_ReadRegister(DRV8316C_Handle_t* hdrv, uint8_t regAddr
                ((regAddr << DRV_SPI_ADDR_SHIFT) & DRV_SPI_ADDR_MASK);
 
     // 2. Calculate and set the even parity bit
-//    if (DRV8316C_CalculateEvenParity(tx_frame))
-//    {
-//        tx_frame |= DRV_SPI_PARITY_BIT;
-//    }
+    if (DRV8316C_CalculateEvenParity(tx_frame))
+    {
+        tx_frame |= DRV_SPI_PARITY_BIT;
+    }
 
     // 3. Transmit/Receive
     //    For a read command, SDO immediately returns the requested register data
@@ -163,7 +163,7 @@ HAL_StatusTypeDef DRV8316C_ApplyDefaultConfig(DRV8316C_Handle_t* hdrv)
     HAL_StatusTypeDef status;
     uint8_t reg_val;
 
-    // --- CTRL_2 (0x04): 6x PWM Mode, Slew Rate 125V/us, SDO Push-Pull ---
+    // --- CTRL_2 (0x04): 3x PWM Mode, Slew Rate 125V/us, SDO Push-Pull ---
     reg_val = DRV_CTRL2_SDO_MODE_PP |
               DRV_CTRL2_SLEW_125V_us |
               DRV_CTRL2_PWM_MODE_3X;
@@ -215,5 +215,3 @@ HAL_StatusTypeDef DRV8316C_ClearFaults(DRV8316C_Handle_t* hdrv)
 
     return DRV8316C_WriteRegister(hdrv, DRV_REG_CTRL_2, reg_val);
 }
-
-

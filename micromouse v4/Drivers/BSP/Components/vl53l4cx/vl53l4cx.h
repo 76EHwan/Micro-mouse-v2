@@ -216,11 +216,13 @@ extern VL53L4CX_RANGING_SENSOR_Drv_t   VL53L4CX_RANGING_SENSOR_Driver;
 /**
   * @}
   */
+int32_t TOF_WriteReg(uint16_t DevAddr, uint8_t *pData, uint16_t Length);
 
 /**
   * @}
   */
-
+int32_t TOF_ReadReg(uint16_t DevAddr, uint8_t *pData, uint16_t Length);
 /**
   * @}
   */
+int32_t TOF_GetTick(void);

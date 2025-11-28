@@ -33,7 +33,8 @@ Core/Src/stm32h5xx_it.o: ../Core/Src/stm32h5xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim_ex.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h \
- ../Core/Inc/stm32h5xx_it.h D:/ZETIN/micromouse\ v4/Motion/Inc/sensor.h \
+ ../Core/Inc/stm32h5xx_it.h \
+ C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h \
  ../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h \
@@ -83,7 +84,7 @@ Core/Src/stm32h5xx_it.o: ../Core/Src/stm32h5xx_it.c ../Core/Inc/main.h \
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim_ex.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h:
 ../Core/Inc/stm32h5xx_it.h:
-D:/ZETIN/micromouse\ v4/Motion/Inc/sensor.h:
+C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h:
 ../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h:
 ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h:
 ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h:

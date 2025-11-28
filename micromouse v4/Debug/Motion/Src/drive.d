@@ -1,7 +1,7 @@
 Motion/Src/drive.o: ../Motion/Src/drive.c \
- D:/ZETIN/micromouse\ v4/Motion/Inc/drive.h \
- D:/ZETIN/micromouse\ v4/Motion/Inc/foc.h \
- D:/ZETIN/micromouse\ v4/Motion/Inc/sensor.h \
+ C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/drive.h \
+ C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/foc.h \
+ C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h \
  ../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h \
@@ -15,9 +15,9 @@ Motion/Src/drive.o: ../Motion/Src/drive.c \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_device.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_dmax_structs.h \
  ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_error_exceptions.h
-D:/ZETIN/micromouse\ v4/Motion/Inc/drive.h:
-D:/ZETIN/micromouse\ v4/Motion/Inc/foc.h:
-D:/ZETIN/micromouse\ v4/Motion/Inc/sensor.h:
+C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/drive.h:
+C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/foc.h:
+C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h:
 ../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h:
 ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h:
 ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h:

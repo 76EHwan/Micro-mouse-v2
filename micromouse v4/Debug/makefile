@@ -67,8 +67,8 @@ all: main-build
 main-build: micromouse\ v4.elf secondary-outputs
 
 # Tool invocations
-micromouse\ v4.elf micromouse\ v4.map: $(OBJS) $(USER_OBJS) D:\ZETIN\micromouse\ v4\STM32H533RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "micromouse v4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"D:\ZETIN\micromouse v4\STM32H533RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="micromouse v4.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+micromouse\ v4.elf micromouse\ v4.map: $(OBJS) $(USER_OBJS) C:\SPB_Data\git\Micro-mouse-v2\micromouse\ v4\STM32H533RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "micromouse v4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\SPB_Data\git\Micro-mouse-v2\micromouse v4\STM32H533RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="micromouse v4.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
