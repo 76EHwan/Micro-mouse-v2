@@ -65,21 +65,28 @@ VL53LX_Error Sensor_Init() {
 		if (HAL_I2C_IsDeviceReady(&hi2c2, 0x52, 2, 10) != HAL_OK) {
 			Custom_LCD_Printf(0, i + 1, "S%d: MISSING(0x52)", i);
 			// 다음 센서를 위해 루프를 계속할지, 여기서 멈출지 결정
-			// continue;
-			return VL53LX_ERROR_CONTROL_INTERFACE; // 디버깅을 위해 멈춤
+			HAL_Delay(1000);
+			 continue;
+//			return VL53LX_ERROR_CONTROL_INTERFACE; // 디버깅을 위해 멈춤
 		}
 
 		// 5. 센서 초기화 (드라이버 로드)
 		if (VL53L4A2_RANGING_SENSOR_Init(i) != BSP_ERROR_NONE) {
 			Custom_LCD_Printf(0, i + 1, "S%d: Init Fail", i);
-			return VL53LX_ERROR_CONTROL_INTERFACE;
+			HAL_Delay(1000);
+
+			 continue;
+//			return VL53LX_ERROR_CONTROL_INTERFACE;
 		}
 
 		// 6. 주소 변경 (0x52 -> 새로운 주소)
 		if (VL53L4A2_RANGING_SENSOR_SetAddress(i,
 				sensor_address[i]) != BSP_ERROR_NONE) {
 			Custom_LCD_Printf(0, i + 1, "S%d: Addr Fail", i);
-			return VL53LX_ERROR_CONTROL_INTERFACE;
+			HAL_Delay(1000);
+
+			continue;
+//			return VL53LX_ERROR_CONTROL_INTERFACE;
 		}
 
 		// 7. 변경된 주소로 잘 살아있는지 최종 확인
@@ -90,6 +97,8 @@ VL53LX_Error Sensor_Init() {
 			Custom_LCD_Printf(0, i + 1, "S%d: Lost (0x%02X)", i,
 					sensor_address[i]);
 		}
+		HAL_Delay(2000);
+
 	}
 	return VL53L4CX_OK;
 }
