@@ -340,9 +340,9 @@ void IMU_CalcGyroBias_All_rad(uint16_t samples, uint16_t delay_ms_each) {
 	float mz = (float) (sz / (double) samples);
 
 	// 평균 raw → rad/s 로 저장
-	bias_gx_rad = gyro_raw_to_rads((int16_t) mx);
-	bias_gy_rad = gyro_raw_to_rads((int16_t) my);
-	bias_gz_rad = gyro_raw_to_rads((int16_t) mz);
+	bias_gx_rad = gyro_raw_to_rads(mx);
+	bias_gy_rad = gyro_raw_to_rads(my);
+	bias_gz_rad = gyro_raw_to_rads(mz);
 }
 
 // 보정된 각속도(rad/s) 3축

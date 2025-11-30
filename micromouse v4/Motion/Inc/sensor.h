@@ -21,6 +21,5 @@ extern bool isTofReady[4];
 
 VL53LX_Error Sensor_Init();
 void Sensor_Start();
-void Sensor_TIM_IRQ();
 
 #endif /* SENSOR_H_ */

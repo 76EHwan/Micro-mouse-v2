@@ -38,8 +38,10 @@ VL53LX_Error Sensor_Init() {
 	SENSOR_XSHUT1_OFF;
 	SENSOR_XSHUT2_OFF;
 	SENSOR_XSHUT3_OFF;
+	HAL_Delay(50); // 전압이 완전히 떨어질 때까지 충분히 대기
 
 	for (uint8_t i = 0; i < 4; i++) {
+		// 2. 해당 센서 켜기
 		switch (i) {
 		case 0:
 			SENSOR_XSHUT0_ON;
@@ -54,50 +56,41 @@ VL53LX_Error Sensor_Init() {
 			SENSOR_XSHUT3_ON;
 			break;
 		}
-		HAL_Delay(10);
-		if (VL53L4A2_RANGING_SENSOR_Init(i) != BSP_ERROR_NONE) {
-			Custom_LCD_Printf(0, i, "Init Fail %d", i);
-			continue;
+
+		// 3. 센서 부팅 대기 (중요: 데이터시트 상 1.2ms지만 여유 있게)
+		HAL_Delay(50);
+
+		// 4. 기본 주소(0x52)로 센서가 살아있는지 확인 (Ping)
+		// 여기서 HAL_OK가 안 나오면 하드웨어 연결 문제임
+		if (HAL_I2C_IsDeviceReady(&hi2c2, 0x52, 2, 10) != HAL_OK) {
+			Custom_LCD_Printf(0, i + 1, "S%d: MISSING(0x52)", i);
+			// 다음 센서를 위해 루프를 계속할지, 여기서 멈출지 결정
+			// continue;
+			return VL53LX_ERROR_CONTROL_INTERFACE; // 디버깅을 위해 멈춤
 		}
-		if (VL53L4A2_RANGING_SENSOR_SetAddress(i, sensor_address[i]) != BSP_ERROR_NONE) {
-			Custom_LCD_Printf(80, i, "Addr Fail %d", i);
+
+		// 5. 센서 초기화 (드라이버 로드)
+		if (VL53L4A2_RANGING_SENSOR_Init(i) != BSP_ERROR_NONE) {
+			Custom_LCD_Printf(0, i + 1, "S%d: Init Fail", i);
+			return VL53LX_ERROR_CONTROL_INTERFACE;
+		}
+
+		// 6. 주소 변경 (0x52 -> 새로운 주소)
+		if (VL53L4A2_RANGING_SENSOR_SetAddress(i,
+				sensor_address[i]) != BSP_ERROR_NONE) {
+			Custom_LCD_Printf(0, i + 1, "S%d: Addr Fail", i);
+			return VL53LX_ERROR_CONTROL_INTERFACE;
+		}
+
+		// 7. 변경된 주소로 잘 살아있는지 최종 확인
+		if (HAL_I2C_IsDeviceReady(&hi2c2, sensor_address[i], 2, 10) == HAL_OK) {
+			Custom_LCD_Printf(0, i + 1, "S%d: OK (0x%02X)", i,
+					sensor_address[i]);
+		} else {
+			Custom_LCD_Printf(0, i + 1, "S%d: Lost (0x%02X)", i,
+					sensor_address[i]);
 		}
 	}
-
-	GPIO_InitTypeDef GPIO_InitStruct = { 0 };
-
-	GPIO_InitStruct.Pin = SNR0_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(SNR0_GPIO_Port, &GPIO_InitStruct);
-	HAL_NVIC_SetPriority(EXTI11_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI11_IRQn);
-
-	GPIO_InitStruct.Pin = SNR1_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(SNR1_GPIO_Port, &GPIO_InitStruct);
-	HAL_NVIC_SetPriority(EXTI11_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI11_IRQn);
-
-	GPIO_InitStruct.Pin = SNR2_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(SNR2_GPIO_Port, &GPIO_InitStruct);
-	HAL_NVIC_SetPriority(EXTI11_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI11_IRQn);
-
-	GPIO_InitStruct.Pin = SNR3_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(SNR3_GPIO_Port, &GPIO_InitStruct);
-	HAL_NVIC_SetPriority(EXTI11_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI11_IRQn);
-
 	return VL53L4CX_OK;
 }
 
