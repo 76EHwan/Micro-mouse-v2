@@ -37,7 +37,7 @@ void Drive_TIM7_IRQ() {
 
 	switch(state){
 	case STRAIGHT:
-		float error_center = distance[0] - distance[3];
+		float error_center = 0.f;
 		float error_center_deriv = error_center - prev_error_center;
 		float error_center_output = KP_CENTER * error_center + KD_CENTER * error_center_deriv;
 		prev_error_center = error_center;

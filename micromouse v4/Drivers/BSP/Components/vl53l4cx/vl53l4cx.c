@@ -20,7 +20,6 @@
 #include "vl53l4cx.h"
 #include "vl53lx_platform.h"
 #include "vl53lx_api.h"
-#include "custom_bus.h"
 
 /** @addtogroup BSP
   * @{
@@ -41,7 +40,7 @@
   */
 
 #define V53L3CX_POLL_TIMEOUT  (0xFFFFU)
-//#define UNUSED(x) (void)(x)
+#define UNUSED(x) (void)(x)
 
 /**
   * @}
@@ -714,27 +713,17 @@ static int32_t vl53l4cx_get_result(VL53L4CX_Object_t *pObj, VL53L4CX_Result_t *p
 }
 
 /**
-  * @} brief
-  *
+  * @}
   */
-int32_t TOF_WriteReg(uint16_t DevAddr, uint8_t *pData, uint16_t Length)
-{
-    return HAL_I2C_Master_Transmit(&hi2c2, DevAddr, pData, Length, 100);
-}
 
 /**
   * @}
   */
-int32_t TOF_ReadReg(uint16_t DevAddr, uint8_t *pData, uint16_t Length)
-{
-    return HAL_I2C_Master_Receive(&hi2c2, DevAddr, pData, Length, 100);
-}
 
 /**
   * @}
   */
-int32_t TOF_GetTick(void)
-{
-    return HAL_GetTick();
-}
 
+/**
+  * @}
+  */

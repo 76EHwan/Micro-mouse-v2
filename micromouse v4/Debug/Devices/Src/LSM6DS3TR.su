@@ -12,7 +12,7 @@
 ../Devices/Src/LSM6DS3TR.c:211:19:LSM6_ReadAccelRaw	32	static
 ../Devices/Src/LSM6DS3TR.c:222:19:LSM6_ReadGA12	40	static
 ../Devices/Src/LSM6DS3TR.c:238:9:LSM6_Merge16	16	static
-../Devices/Src/LSM6DS3TR.c:254:6:LSM6DS3TR_C_Init	16	static
+../Devices/Src/LSM6DS3TR.c:254:6:LSM6DS3TR_C_Init	8	static
 ../Devices/Src/LSM6DS3TR.c:279:6:IMU_Start	8	static
 ../Devices/Src/LSM6DS3TR.c:287:6:LSM6DS3TR_C_IRQ	24	static
 ../Devices/Src/LSM6DS3TR.c:324:6:IMU_CalcGyroBias_All_rad	104	static

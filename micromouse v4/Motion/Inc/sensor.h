@@ -8,13 +8,16 @@
 #ifndef SENSOR_H_
 #define SENSOR_H_
 
+#include <stdbool.h>
 #include "vl53l4cx.h"
 
 #define SENSOR_TIM &htim12
 
-extern VL53L4CX_Object_t sensor[4];
-extern VL53L4CX_Result_t result[4];
-extern uint32_t distance[4];
+extern VL53L4CX_Object_t TOF_Sensor[4];
+extern VL53L4CX_IO_t TOF_IO;
+extern VL53L4CX_Result_t TOF_Result[4];
+extern VL53L4CX_ITConfig_t TOF_ITConfig[4];
+extern bool isTofReady[4];
 
 VL53LX_Error Sensor_Init();
 void Sensor_Start();

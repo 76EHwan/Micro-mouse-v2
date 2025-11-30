@@ -252,15 +252,15 @@ volatile float pitch_deg = 0.f;
 volatile float roll_deg = 0.f;
 
 void LSM6DS3TR_C_Init() {
-	Custom_LCD_Printf(0, 0, "wait");
-	HAL_Delay(500);
-	// 1. WHO_AM_I 확인
-	uint8_t who_am_i = LSM6DS3TR_C_ReadU8(LSM6DS3TR_C_WHO_AM_I_REG);
-	Custom_LCD_Printf(0, 1, "WHO_AM_I: 0x%02X", who_am_i);
-	HAL_Delay(500);
+//	Custom_LCD_Printf(0, 0, "wait");
+//	HAL_Delay(500);
+//	// 1. WHO_AM_I 확인
+//	uint8_t who_am_i = LSM6DS3TR_C_ReadU8(LSM6DS3TR_C_WHO_AM_I_REG);
+//	Custom_LCD_Printf(0, 1, "WHO_AM_I: 0x%02X", who_am_i);
+//	HAL_Delay(500);
 	// 2. CTRL 설정
 //	LSM6DS3TR_C_ConfigCTRL3C();
-	Custom_LCD_Clear();
+//	Custom_LCD_Clear();
 	LSM6DS3TR_C_ConfigCTRL();
 	LSM6_update_gyro_sens_from_device();   // 감도 동기화
 //
