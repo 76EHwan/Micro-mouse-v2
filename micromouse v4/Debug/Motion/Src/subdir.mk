@@ -5,16 +5,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Motion/Src/bldc_open_loop.c \
 ../Motion/Src/drive.c \
 ../Motion/Src/foc.c \
 ../Motion/Src/sensor.c 
 
 OBJS += \
+./Motion/Src/bldc_open_loop.o \
 ./Motion/Src/drive.o \
 ./Motion/Src/foc.o \
 ./Motion/Src/sensor.o 
 
 C_DEPS += \
+./Motion/Src/bldc_open_loop.d \
 ./Motion/Src/drive.d \
 ./Motion/Src/foc.d \
 ./Motion/Src/sensor.d 
@@ -27,7 +30,7 @@ Motion/Src/%.o Motion/Src/%.su Motion/Src/%.cyclo: ../Motion/Src/%.c Motion/Src/
 clean: clean-Motion-2f-Src
 
 clean-Motion-2f-Src:
-	-$(RM) ./Motion/Src/drive.cyclo ./Motion/Src/drive.d ./Motion/Src/drive.o ./Motion/Src/drive.su ./Motion/Src/foc.cyclo ./Motion/Src/foc.d ./Motion/Src/foc.o ./Motion/Src/foc.su ./Motion/Src/sensor.cyclo ./Motion/Src/sensor.d ./Motion/Src/sensor.o ./Motion/Src/sensor.su
+	-$(RM) ./Motion/Src/bldc_open_loop.cyclo ./Motion/Src/bldc_open_loop.d ./Motion/Src/bldc_open_loop.o ./Motion/Src/bldc_open_loop.su ./Motion/Src/drive.cyclo ./Motion/Src/drive.d ./Motion/Src/drive.o ./Motion/Src/drive.su ./Motion/Src/foc.cyclo ./Motion/Src/foc.d ./Motion/Src/foc.o ./Motion/Src/foc.su ./Motion/Src/sensor.cyclo ./Motion/Src/sensor.d ./Motion/Src/sensor.o ./Motion/Src/sensor.su
 
 .PHONY: clean-Motion-2f-Src
 

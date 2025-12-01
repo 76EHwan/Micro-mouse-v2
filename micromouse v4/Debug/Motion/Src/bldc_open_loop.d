@@ -1,5 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
- ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h \
+Motion/Src/bldc_open_loop.o: ../Motion/Src/bldc_open_loop.c \
+ ../Core/Inc/main.h ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h \
  ../Core/Inc/stm32h5xx_hal_conf.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_rcc.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_def.h \
@@ -33,32 +33,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim_ex.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h \
- ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/icache.h \
- ../Core/Inc/spi.h ../Core/Inc/tim.h ../Core/Inc/gpio.h \
- C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Drivers/BSP/ST7735/lcd.h \
- C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Drivers/BSP/ST7735/st7735.h \
- C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Drivers/BSP/ST7735/st7735_reg.h \
- C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h \
- ../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h \
- ../Drivers/BSP/Components/vl53l4cx/porting/vl53lx_platform_user_config.h \
- ../Drivers/BSP/Components/vl53l4cx/porting/vl53lx_platform_user_defines.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_error_codes.h \
- ../Drivers/BSP/Components/vl53l4cx/porting/vl53lx_types.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_register_structs.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_register_map.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_hist_structs.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_device.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_dmax_structs.h \
- ../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_error_exceptions.h \
- ../Drivers/BSP/53L4A2/53l4a2_ranging_sensor.h \
- ../Drivers/BSP/Components/Common/ranging_sensor.h \
- ../X-CUBE-TOF1/Target/53l4a2_conf.h ../Core/Inc/custom_bus.h \
- ../Core/Inc/custom_conf.h ../Core/Inc/custom_errno.h \
- ../Core/Inc/custom_errno.h \
- C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Devices/Inc/DRV8316C.h \
- C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Devices/Inc/LSM6DS3TR.h \
+ ../Core/Inc/tim.h ../Core/Inc/main.h \
+ C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/drive.h \
  C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/bldc_open_loop.h
 ../Core/Inc/main.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h:
@@ -95,36 +71,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_tim_ex.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h:
-../Core/Inc/adc.h:
-../Core/Inc/main.h:
-../Core/Inc/icache.h:
-../Core/Inc/spi.h:
 ../Core/Inc/tim.h:
-../Core/Inc/gpio.h:
-C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Drivers/BSP/ST7735/lcd.h:
-C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Drivers/BSP/ST7735/st7735.h:
-C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Drivers/BSP/ST7735/st7735_reg.h:
-C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/sensor.h:
-../Drivers/BSP/Components/vl53l4cx/vl53l4cx.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_def.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_def.h:
-../Drivers/BSP/Components/vl53l4cx/porting/vl53lx_platform_user_config.h:
-../Drivers/BSP/Components/vl53l4cx/porting/vl53lx_platform_user_defines.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_error_codes.h:
-../Drivers/BSP/Components/vl53l4cx/porting/vl53lx_types.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_register_structs.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_register_map.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_hist_structs.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_ll_device.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_dmax_structs.h:
-../Drivers/BSP/Components/vl53l4cx/modules/vl53lx_error_exceptions.h:
-../Drivers/BSP/53L4A2/53l4a2_ranging_sensor.h:
-../Drivers/BSP/Components/Common/ranging_sensor.h:
-../X-CUBE-TOF1/Target/53l4a2_conf.h:
-../Core/Inc/custom_bus.h:
-../Core/Inc/custom_conf.h:
-../Core/Inc/custom_errno.h:
-../Core/Inc/custom_errno.h:
-C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Devices/Inc/DRV8316C.h:
-C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Devices/Inc/LSM6DS3TR.h:
+../Core/Inc/main.h:
+C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/drive.h:
 C:/SPB_Data/git/Micro-mouse-v2/micromouse\ v4/Motion/Inc/bldc_open_loop.h:

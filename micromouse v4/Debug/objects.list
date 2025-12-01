@@ -64,6 +64,7 @@
 "./Drivers/STM32H5xx_HAL_Driver/Src/stm32h5xx_hal_spi_ex.o"
 "./Drivers/STM32H5xx_HAL_Driver/Src/stm32h5xx_hal_tim.o"
 "./Drivers/STM32H5xx_HAL_Driver/Src/stm32h5xx_hal_tim_ex.o"
+"./Motion/Src/bldc_open_loop.o"
 "./Motion/Src/drive.o"
 "./Motion/Src/foc.o"
 "./Motion/Src/sensor.o"

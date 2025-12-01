@@ -1,0 +1,4 @@
+../Motion/Src/bldc_open_loop.c:43:13:SVPWM_Generate	11
+../Motion/Src/bldc_open_loop.c:85:13:BLDC_Update_Loop	7
+../Motion/Src/bldc_open_loop.c:125:6:Motor_Control_Loop	1
+../Motion/Src/bldc_open_loop.c:133:6:Motor_Start	1

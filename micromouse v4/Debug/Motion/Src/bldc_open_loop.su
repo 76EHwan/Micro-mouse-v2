@@ -1,0 +1,4 @@
+../Motion/Src/bldc_open_loop.c:43:13:SVPWM_Generate	64	static
+../Motion/Src/bldc_open_loop.c:85:13:BLDC_Update_Loop	48	static
+../Motion/Src/bldc_open_loop.c:125:6:Motor_Control_Loop	8	static
+../Motion/Src/bldc_open_loop.c:133:6:Motor_Start	8	static
