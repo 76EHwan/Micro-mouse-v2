@@ -139,13 +139,13 @@ int main(void) {
 	DRV8316C_ApplyDefaultConfig(&DRV8316C_R);
 	HAL_Delay(10);
 
-	DRV8316C_ClearFaults(&DRV8316C_L);
-	DRV8316C_ClearFaults(&DRV8316C_R);
-	HAL_Delay(10);
+//	DRV8316C_ClearFaults(&DRV8316C_L);
+//	DRV8316C_ClearFaults(&DRV8316C_R);
+//	HAL_Delay(10);
 
-	DRV8316C_LockRegister(&DRV8316C_L);
-	DRV8316C_LockRegister(&DRV8316C_R);
-	HAL_Delay(10);
+//	DRV8316C_LockRegister(&DRV8316C_L);
+//	DRV8316C_LockRegister(&DRV8316C_R);
+//	HAL_Delay(10);
 
 	Custom_LCD_Clear();
 	HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_1);
@@ -153,9 +153,10 @@ int main(void) {
 
 	LSM6DS3TR_C_Init();
 
+	HAL_Delay(10);
 	Motor_Start();
-	mps.ref.left = 20.f;
-	mps.ref.right = 20.f;
+	mps.ref.left = 200.f;
+	mps.ref.right = 200.f;
 
 //	Sensor_Init();
 
@@ -170,20 +171,24 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
+		DRV8316C_ClearFaults(&DRV8316C_L);
+		DRV8316C_ClearFaults(&DRV8316C_R);
 
 		DRV8316C_ReadRegister(&DRV8316C_L, DRV_REG_IC_STATUS, &pData1);
 		DRV8316C_ReadRegister(&DRV8316C_L, DRV_REG_STATUS_1, &pData2);
 		DRV8316C_ReadRegister(&DRV8316C_L, DRV_REG_STATUS_2, &pData3);
+		DRV8316C_ReadRegister(&DRV8316C_L, DRV_REG_CTRL_2, &pData4);
 
-		Custom_LCD_Printf(0, 1, "%02x %02x %02x", pData1, pData2, pData3);
+		Custom_LCD_Printf(0, 1, "%02x %02x %02x %02x", pData1, pData2, pData3, pData4);
 
 		DRV8316C_ReadRegister(&DRV8316C_R, DRV_REG_IC_STATUS, &pData1);
 		DRV8316C_ReadRegister(&DRV8316C_R, DRV_REG_STATUS_1, &pData2);
 		DRV8316C_ReadRegister(&DRV8316C_R, DRV_REG_STATUS_2, &pData3);
+		DRV8316C_ReadRegister(&DRV8316C_R, DRV_REG_CTRL_2, &pData4);
 
-		Custom_LCD_Printf(0, 2, "%02x %02x %02x", pData1, pData2, pData3);
+		Custom_LCD_Printf(0, 2, "%02x %02x %02x %02x", pData1, pData2, pData3, pData4);
 
-		Custom_LCD_Printf(0, 4, "%.6f", yaw_deg);
+		Custom_LCD_Printf(0, 4, "%3.6f", yaw_deg);
 //		HAL_Delay(100);
 	}
 	/* USER CODE END 3 */
