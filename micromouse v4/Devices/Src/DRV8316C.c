@@ -210,7 +210,7 @@ HAL_StatusTypeDef DRV8316C_ClearFaults(DRV8316C_Handle_t* hdrv)
     // Example: Clear faults while maintaining 6x PWM, 125V/us Slew, Push-Pull SDO
     uint8_t reg_val = DRV_CTRL2_SDO_MODE_PP |
                       DRV_CTRL2_SLEW_125V_us |
-                      DRV_CTRL2_PWM_MODE_6X |
+                      DRV_CTRL2_PWM_MODE_3X |
                       DRV_CTRL2_CLR_FLT_BIT;
 
     return DRV8316C_WriteRegister(hdrv, DRV_REG_CTRL_2, reg_val);

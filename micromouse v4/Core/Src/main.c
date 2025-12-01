@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "lcd.h"
 #include "sensor.h"
+#include "drive.h"
 #include "53l4a2_ranging_sensor.h"
 
 #include "DRV8316C.h"
@@ -69,7 +70,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	if (htim->Instance == TIM6) {
 		LSM6DS3TR_C_IRQ();
 	}
-	if(htim->Instance == TIM7) {
+	if (htim->Instance == TIM7) {
 		Motor_Control_Loop();
 	}
 }
@@ -83,9 +84,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 int main(void) {
 
 	/* USER CODE BEGIN 1 */
-//	uint8_t pData1 = 0;
-//	uint8_t pData2 = 0;
-//	uint8_t pData3 = 0;
+	uint8_t pData1 = 0;
+	uint8_t pData2 = 0;
+	uint8_t pData3 = 0;
+	uint8_t pData4 = 0;
 	/* USER CODE END 1 */
 
 	/* MCU Configuration--------------------------------------------------------*/
@@ -131,10 +133,19 @@ int main(void) {
 
 	DRV8316C_UnlockRegister(&DRV8316C_L);
 	DRV8316C_UnlockRegister(&DRV8316C_R);
+	HAL_Delay(10);
+
 	DRV8316C_ApplyDefaultConfig(&DRV8316C_L);
 	DRV8316C_ApplyDefaultConfig(&DRV8316C_R);
+	HAL_Delay(10);
+
+	DRV8316C_ClearFaults(&DRV8316C_L);
+	DRV8316C_ClearFaults(&DRV8316C_R);
+	HAL_Delay(10);
+
 	DRV8316C_LockRegister(&DRV8316C_L);
 	DRV8316C_LockRegister(&DRV8316C_R);
+	HAL_Delay(10);
 
 	Custom_LCD_Clear();
 	HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_1);
@@ -143,6 +154,9 @@ int main(void) {
 	LSM6DS3TR_C_Init();
 
 	Motor_Start();
+	mps.ref.left = 20.f;
+	mps.ref.right = 20.f;
+
 //	Sensor_Init();
 
 //	Sensor_Start();
@@ -157,13 +171,17 @@ int main(void) {
 
 		/* USER CODE BEGIN 3 */
 
-		Custom_LCD_Printf(0, 0, "%d", TIM1->CCR1);
-		Custom_LCD_Printf(0, 1, "%d", TIM1->CCR2);
-		Custom_LCD_Printf(0, 2, "%d", TIM1->CCR3);
+		DRV8316C_ReadRegister(&DRV8316C_L, DRV_REG_IC_STATUS, &pData1);
+		DRV8316C_ReadRegister(&DRV8316C_L, DRV_REG_STATUS_1, &pData2);
+		DRV8316C_ReadRegister(&DRV8316C_L, DRV_REG_STATUS_2, &pData3);
 
-		Custom_LCD_Printf(8, 0, "%d", TIM8->CCR1);
-		Custom_LCD_Printf(8, 1, "%d", TIM8->CCR2);
-		Custom_LCD_Printf(8, 2, "%d", TIM8->CCR3);
+		Custom_LCD_Printf(0, 1, "%02x %02x %02x", pData1, pData2, pData3);
+
+		DRV8316C_ReadRegister(&DRV8316C_R, DRV_REG_IC_STATUS, &pData1);
+		DRV8316C_ReadRegister(&DRV8316C_R, DRV_REG_STATUS_1, &pData2);
+		DRV8316C_ReadRegister(&DRV8316C_R, DRV_REG_STATUS_2, &pData3);
+
+		Custom_LCD_Printf(0, 2, "%02x %02x %02x", pData1, pData2, pData3);
 
 		Custom_LCD_Printf(0, 4, "%.6f", yaw_deg);
 //		HAL_Delay(100);

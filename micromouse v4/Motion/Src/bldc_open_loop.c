@@ -42,7 +42,7 @@ BLDC_Motor_t Motor_R = { .htim = &htim8, .theta_e = 0.0f };
 // 입력: 전압 벡터 Valpha, Vbeta (Volts)
 static void SVPWM_Generate(TIM_HandleTypeDef *htim, float Valpha, float Vbeta) {
     float Ta, Tb, Tc;
-    float Vref = (2.0f / VBUS_VOLTAGE) * PWM_PERIOD; // 전압을 PWM 듀티로 변환하는 계수
+    float Vref = (1.0f / VBUS_VOLTAGE) * PWM_PERIOD; // 전압을 PWM 듀티로 변환하는 계수
 
     // 역 Clarke 변환 및 SVPWM 시간 계산
 //    float X = Vbeta * Vref;
