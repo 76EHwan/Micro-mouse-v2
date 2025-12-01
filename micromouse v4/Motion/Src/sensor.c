@@ -11,8 +11,8 @@
 #include "tim.h"
 #include "53l4a2_ranging_sensor.h"
 
-#define SENSOR_MUX_XSHUT ((SNR_MUX_GPIO_Port)->BRR = (uint32_t) (SNR_MUX_Pin))
-#define SENSOR_MUX_GPIO0 ((SNR_MUX_GPIO_Port)->BSRR = (uint32_t) (SNR_MUX_Pin))
+#define SENSOR_MUX_XSHUT_EN ((SNR_MUX_GPIO_Port)->BRR = (uint32_t) (SNR_MUX_Pin))
+#define SENSOR_MUX_GPIO1_EN ((SNR_MUX_GPIO_Port)->BSRR = (uint32_t) (SNR_MUX_Pin))
 
 #define SENSOR_XSHUT0_ON ((SNR0_GPIO_Port)->BSRR = (uint32_t)(SNR0_Pin))
 #define SENSOR_XSHUT1_ON ((SNR1_GPIO_Port)->BSRR = (uint32_t)(SNR1_Pin))
@@ -33,15 +33,15 @@ bool isTofReady[4];
 const uint16_t sensor_address[4] = { 0x54, 0x56, 0x58, 0x5A };
 
 VL53LX_Error Sensor_Init() {
-	SENSOR_MUX_XSHUT;
+	SENSOR_MUX_XSHUT_EN;
+	HAL_Delay(10);
 	SENSOR_XSHUT0_OFF;
 	SENSOR_XSHUT1_OFF;
 	SENSOR_XSHUT2_OFF;
 	SENSOR_XSHUT3_OFF;
-	HAL_Delay(50); // 전압이 완전히 떨어질 때까지 충분히 대기
+	HAL_Delay(50);
 
 	for (uint8_t i = 0; i < 4; i++) {
-		// 2. 해당 센서 켜기
 		switch (i) {
 		case 0:
 			SENSOR_XSHUT0_ON;
