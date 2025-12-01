@@ -66,10 +66,10 @@ void PeriphCommonClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	if (htim == LSM6DS3TR_TIM) {
+	if (htim->Instance == TIM6) {
 		LSM6DS3TR_C_IRQ();
 	}
-	if(htim == &htim7) {
+	if(htim->Instance == TIM7) {
 		Motor_Control_Loop();
 	}
 }
@@ -141,11 +141,12 @@ int main(void) {
 	LCD_Test();
 
 	LSM6DS3TR_C_Init();
+
 	Motor_Start();
 //	Sensor_Init();
 
 //	Sensor_Start();
-//	IMU_Start();
+	IMU_Start();
 //	Custom_LCD_Printf(0, 0, "yaw");
 	/* USER CODE END 2 */
 
@@ -163,7 +164,8 @@ int main(void) {
 		Custom_LCD_Printf(8, 0, "%d", TIM8->CCR1);
 		Custom_LCD_Printf(8, 1, "%d", TIM8->CCR2);
 		Custom_LCD_Printf(8, 2, "%d", TIM8->CCR3);
-//		Custom_LCD_Printf(0, 1, "%.6f", yaw_deg);
+
+		Custom_LCD_Printf(0, 4, "%.6f", yaw_deg);
 //		HAL_Delay(100);
 	}
 	/* USER CODE END 3 */
